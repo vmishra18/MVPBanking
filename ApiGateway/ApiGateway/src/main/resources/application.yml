@@ -1,0 +1,33 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: API-GATEWAY
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: http://localhost:3089/customers
+          predicates:
+            - Path=/customers/**
+
+        - id: ACCOUNT-SERVICE
+          uri: http://localhost:8761/accounts
+          predicates:
+            - Path=/accounts/**
+
+
+
+
+
+eureka:
+instance:
+  prefer-ip-address: true
+client:
+  fetch-registry: true
+  register-with-eureka: true
+  service-url:
+    defaultZone: http://localhost:8761/eureka

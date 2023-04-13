@@ -1,0 +1,14 @@
+server:
+  port: 8985
+
+
+spring:
+  application:
+    name: CONFIG-SERVER
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/vmishra18/Microservices
+          clone-on-start: true
